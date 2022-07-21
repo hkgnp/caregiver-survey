@@ -36,7 +36,7 @@ app.use(
 );
 
 (async () => {
-  const db = await MongoUtil.connect(mongoUrl, "imh-caregiver-survey");
+  const db = await MongoUtil.connect(mongoUrl, "caregiver-survey");
 
   // Questionnaire page
   app.get("/", async (req, res) => {
