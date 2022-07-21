@@ -1,0 +1,221 @@
+{{#extends "base"}}
+  {{#block "title"}}Caregiver Survey{{/block}}
+  {{#block "content"}}
+    <h1 class="mb-4">Questionnaire</h1>
+    <form method="post">
+      <section class="mb-4">
+        <div class="row mb-3">
+          <div class="col">
+            <label for="msw_name" class="form-label">MSW Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="msw_name"
+              name="msw_name"
+              required
+            />
+          </div>
+          <div class="col">
+            <label for="date" class="form-label">Survey Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="date"
+              name="date"
+              required
+            />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h5 class="text-secondary">Caregiver Details</h5>
+
+        <div class="row mb-3">
+          <div class="col">
+            <label for="age" class="form-label">Age</label>
+            <select class="form-select" id="age" name="age" required>
+              <option selected>Select an age group</option>
+              <option value="1">Below 21</option>
+              <option value="2">21-30</option>
+              <option value="3">31-40</option>
+              <option value="4">41-50</option>
+              <option value="5">51-60</option>
+              <option value="6">61-70</option>
+              <option value="7">Above 71</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select" id="gender" name="gender" required>
+              <option selected>Select a gender</option>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+              <option value="3">Others</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <label for="age" class="form-label">Race</label>
+            <select class="form-select" id="race" name="race" required>
+              <option selected>Select a race</option>
+              <option value="1">Chinese</option>
+              <option value="2">Malay</option>
+              <option value="3">Indian</option>
+              <option value="4">Others</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="marital_status" class="form-label">Marital Status</label>
+            <select
+              class="form-select"
+              id="marital_status"
+              name="marital_status"
+              required
+            >
+              <option selected>Select a marital status</option>
+              <option value="1">Married</option>
+              <option value="2">Divorced</option>
+              <option value="3">Widowed</option>
+              <option value="4">Single</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <label for="education_level" class="form-label">Highest Education
+              Level</label>
+            <select
+              class="form-select"
+              id="education_level"
+              name="education_level"
+              required
+            >
+              <option selected>Select an education level</option>
+              <option value="1">Primary</option>
+              <option value="2">Secondary</option>
+              <option value="3">ITE</option>
+              <option value="4">Diploma</option>
+              <option value="5">Degree and above</option>
+              <option value="6">Others</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="employment_status" class="form-label">Employment Status</label>
+            <select
+              class="form-select"
+              id="employment_status"
+              name="employment_status"
+              required
+            >
+              <option selected>Select an employment status</option>
+              <option value="1">Full-time</option>
+              <option value="2">Part-time</option>
+              <option value="3">Not working</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <label for="main_caregiver" class="form-label">Are you the main
+              caregiver?</label>
+            <select
+              class="form-select"
+              id="main_caregiver"
+              name="main_caregiver"
+              required
+            >
+              <option selected>Select an option</option>
+              <option value="1">Yes</option>
+              <option value="2">No</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="caregiving_length" class="form-label">Length of
+              Caregiving</label>
+            <select
+              class="form-select"
+              id="caregiving_length"
+              name="caregiving_length"
+            >
+              <option selected>Select an option </option>
+              <option value="1">Less than 1 year</option>
+              <option value="2">1-3 years</option>
+              <option value="3">4-6 years</option>
+              <option value="4">7-10 years</option>
+              <option value="5">11-20 years</option>
+              <option value="6">More than 21 years</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h4 class="text-secondary mt-5 mb-3">Zarit Burden Scale</h4>
+        {{#each questions}}
+          <div class="mb-4">
+            <p>{{this.qn}}</p>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name={{this.no}}
+                id="0"
+                value="0"
+                required
+              />
+              <label class="form-check-label" for="0">Never</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name={{this.no}}
+                id="1"
+                value="1"
+              />
+              <label class="form-check-label" for="1">Rarely</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name={{this.no}}
+                id="2"
+                value="2"
+              />
+              <label class="form-check-label" for="2">Sometimes</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name={{this.no}}
+                id="3"
+                value="3"
+              />
+              <label class="form-check-label" for="3">Quite Frequently</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name={{this.no}}
+                id="4"
+                value="4"
+              />
+              <label class="form-check-label" for="4">Nearly Always</label>
+            </div>
+          </div>
+        {{/each}}
+
+        <button type="reset" class="btn btn-danger">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </section>
+    </form>
+  {{/block}}
+{{/extends}}
