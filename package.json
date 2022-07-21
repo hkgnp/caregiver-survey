@@ -10,5 +10,8 @@
   "name": "caregiver-survey",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "14.x"
+  }
 }
