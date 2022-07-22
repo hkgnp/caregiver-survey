@@ -12,6 +12,12 @@ app.use(express.json());
 app.use(cors());
 
 app.use(express.static("public"));
+app.use(
+  "/scripts",
+  express.static(__dirname + "/node_modules/bootstrap/dist/js")
+);
+app.use("/css", express.static(__dirname + "/node_modules/bootstrap/dist/css"));
+
 app.set("view engine", "hbs");
 wax.on(hbs.handlebars);
 wax.setLayoutPath("./views/layouts");
