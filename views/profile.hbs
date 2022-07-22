@@ -5,29 +5,27 @@
 
     <div class="bg-secondary p-3 rounded text-white mb-5">
       <div class="row">
-        <div class="col">
+        <div class="col text-center">
           <p>Your MSW:<br />
             <i class="fa-solid fa-person"></i>
-            <span class="fs-4">{{result.msw_name}}</span></p>
+            <span class="fs-5">{{result.msw_name}}</span></p>
         </div>
-        <div class="col">
+        <div class="col text-center">
           <p class="mb-0">Survey Date:<br />
             <i class="fa-solid fa-calendar-day"></i>
-            <span class="fs-4">{{result.date}}</span></p>
+            <span class="fs-5">{{result.date}}</span></p>
         </div>
       </div>
 
       <div class="row">
-        <div class="col">
+        <div class="col text-center">
           <p>Your Screen Score:<br />
-            <span id="screenScore" class="fs-4"><i
-                class="fa-solid fa-star-half-stroke"
-              ></i>
+            <span id="screenScore" class="fs-4 p-1 rounded">
               {{result.screenScore}}</span></p>
         </div>
-        <div class="col">
+        <div class="col text-center">
           <p>Your Survey Score:<br />
-            <span id="surveyScore" class="fs-4"><i class="fa-solid fa-star"></i>
+            <span id="surveyScore" class="fs-4 p-1 rounded">
               {{result.surveyScore}}</span></p>
         </div>
       </div>
@@ -35,23 +33,42 @@
 
     <h3 class="mb-4">Details</h3>
 
-    <div class="row">
-      <div class="col">Age: {{result.age}}</div>
-      <div class="col">Gender: {{result.gender}}</div>
-    </div>
-    <div class="row">
-      <div class="col">Race: {{result.race}}</div>
-      <div class="col">Marital Status: {{result.marital_status}}</div>
-    </div>
-    <div class="row">
-      <div class="col">Highest Education Level: {{result.education_level}}</div>
-      <div class="col">Employment Status: {{result.employment_status}}</div>
-    </div>
-    <div class="row">
-      <div class="col">Main Caregiver?: {{result.main_caregiver}}</div>
-      <div class="col">Caregiving Length: {{result.caregiving_length}}</div>
-    </div>
-
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Age</td>
+          <td class="text-end">{{result.age}}</td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td class="text-end">{{result.gender}}</td>
+        </tr>
+        <tr>
+          <td>Race</td>
+          <td class="text-end">{{result.race}}</td>
+        </tr>
+        <tr>
+          <td>Marital Status</td>
+          <td class="text-end">{{result.marital_status}}</td>
+        </tr>
+        <tr>
+          <td>Highest Education Level</td>
+          <td class="text-end">{{result.education_level}}</td>
+        </tr>
+        <tr>
+          <td>Employment Status</td>
+          <td class="text-end">{{result.employment_status}}</td>
+        </tr>
+        <tr>
+          <td>Main Caregiver?</td>
+          <td class="text-end">{{result.main_caregiver}}</td>
+        </tr>
+        <tr>
+          <td>Caregiving Length</td>
+          <td class="text-end">{{result.caregiving_length}}</td>
+        </tr>
+      </tbody>
+    </table>
     <h3 class="mt-5 mb-4">Zarit Scores</h3>
 
     <table class="table">
@@ -205,11 +222,13 @@
       document.getElementById("printBtn").addEventListener("click", ()=>{
       window.print() }); const screenScore =
       parseInt(document.getElementById("screenScore").innerText); if
-      (screenScore >= 8) { document.getElementById("screenScore").style.color =
-      "red"; } const surveyScore =
-      parseInt(document.getElementById("surveyScore").innerText); if
-      (screenScore >= 8) { document.getElementById("surveyScore").style.color =
-      "red"; }
+      (screenScore >= 8) {
+      document.getElementById("screenScore").style.backgroundColor = "yellow";
+      document.getElementById("screenScore").style.color = "black"; } const
+      surveyScore = parseInt(document.getElementById("surveyScore").innerText);
+      if (surveyScore >= 17) {
+      document.getElementById("surveyScore").style.backgroundColor = "yellow";
+      document.getElementById("surveyScore").style.color = "black"; }
     </script>
   {{/block}}
 {{/extends}}
