@@ -1,0 +1,148 @@
+{{#extends "base"}}
+  {{#block "title"}}Zarit Details{{/block}}
+
+  {{#block "content"}}
+    <h1 class="mb-4">Details of Zarit Caregiver Burden Scale</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Question</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DO YOU FEEL that because of the time you spend with your relative
+            that you don’t have enough time for yourself?</td>
+          <td>
+            {{#if_eq result.qn1 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn1 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn1 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn1 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn1 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU FEEL stress when caring for your relative and trying to
+            meet other responsibilities (work/family)?</td>
+          <td>
+            {{#if_eq result.qn2 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn2 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn2 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn2 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn2 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU FEEL angry when you are around your relative?</td>
+          <td>
+            {{#if_eq result.qn3 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn3 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn3 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn3 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn3 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU FEEL that your relative currently affects your
+            relationships with family members or friends in a negative way?</td>
+          <td>
+            {{#if_eq result.qn4 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn4 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn4 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn4 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn4 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU FEEL strained when you are around your relative?</td>
+          <td>
+            {{#if_eq result.qn5 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn5 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn5 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn5 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn5 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU FEEL that your health has suffered because of your
+            involvement with your relative?</td>
+          <td>
+            {{#if_eq result.qn6 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn6 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn6 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn6 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn6 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU FEEL that you do not have as much privacy as you would like
+            because of your relative?</td>
+          <td>
+            {{#if_eq result.qn7 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn7 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn7 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn7 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn7 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU FEEL that your social life has suffered because you are
+            caring for your relative?</td>
+          <td>
+            {{#if_eq result.qn8 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn8 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn8 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn8 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn8 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU FEEL that you have lost control of your life since your
+            relative’s illness?</td>
+          <td>
+            {{#if_eq result.qn9 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn9 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn9 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn9 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn9 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU FEEL uncertain about what to do about your relative?</td>
+          <td>
+            {{#if_eq result.qn10 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn10 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn10 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn10 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn10 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU FEEL you should be doing more for your family?</td>
+          <td>
+            {{#if_eq result.qn11 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn11 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn11 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn11 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn11 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+        <tr>
+          <td>DO YOU THINK you could do a better job in caring for your
+            relative?</td>
+          <td>
+            {{#if_eq result.qn12 "0"}}Never{{/if_eq}}
+            {{#if_eq result.qn12 "1"}}Rarely{{/if_eq}}
+            {{#if_eq result.qn12 "2"}}Sometimes{{/if_eq}}
+            {{#if_eq result.qn12 "3"}}Quite Frequently{{/if_eq}}
+            {{#if_eq result.qn12 "4"}}Nearly Always{{/if_eq}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="/dashboard">Back</a>
+  {{/block}}
+{{/extends}}

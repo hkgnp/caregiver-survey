@@ -106,6 +106,18 @@ app.use(
       results: results,
     });
   });
+
+  app.get("/details/:id", async (req, res) => {
+    const result = await db
+      .collection("results")
+      .find({ _id: new ObjectID(req.params.id) })
+      .toArray();
+
+    res.status(200);
+    res.render("details", {
+      result: result[0],
+    });
+  });
 })();
 
 app.listen(process.env.PORT || 7000, () =>
