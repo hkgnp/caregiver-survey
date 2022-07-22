@@ -5,25 +5,26 @@
     <div class="d-flex gap-3">
       <h1 class="mb-4">Dashboard</h1>
       <div><a class="btn btn-success" href="/">New Survey</a></div>
+      <div><button id="export" class="btn btn-primary">Download to CSV</button></div>
     </div>
 
-    <table class="table table-hover table-responsive">
+    <table id="profile" class="table table-hover table-responsive">
       <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Survey Date</th>
-          <th scope="col">MSW Name</th>
-          <th scope="col">Age</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Race</th>
-          <th scope="col">Marital Status</th>
-          <th scope="col">Highest Education Level</th>
-          <th scope="col">Employment Status</th>
-          <th scope="col">Main Caregiver?</th>
-          <th scope="col">Caregiving Length</th>
-          <th scope="col">Screen Score</th>
-          <th scope="col">Survey Score</th>
-          <th scope="col">Zarit details</th>
+          <th>ID</th>
+          <th>Survey Date</th>
+          <th>MSW Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Race</th>
+          <th>Marital Status</th>
+          <th>Highest Education Level</th>
+          <th>Employment Status</th>
+          <th>Main Caregiver?</th>
+          <th>Caregiving Length</th>
+          <th>Screen Score</th>
+          <th>Survey Score</th>
+          <th>Zarit details</th>
         </tr>
       </thead>
       <tbody>
@@ -50,5 +51,25 @@
         {{/each}}
       </tbody>
     </table>
+  {{/block}}
+
+  {{#block "js"}}
+    <script>function htmlToCSV(html, filename) { var data = []; var rows =
+      document.querySelectorAll("table tr"); for (var i = 0; i < rows.length;
+      i++) { var row = [], cols = rows[i].querySelectorAll("td, th"); for (var j
+      = 0; j < cols.length; j++) { row.push(cols[j].innerText); }
+      data.push(row.join(",")); } downloadCSVFile(data.join("\\\n"), filename);
+      }</script>
+
+    <script>function downloadCSVFile(csv, filename) { var csv_file,
+      download_link; csv_file = new Blob([csv], {type: "text/csv"});
+      download_link = document.createElement("a"); download_link.download =
+      filename; download_link.href = window.URL.createObjectURL(csv_file);
+      download_link.style.display = "none";
+      document.body.appendChild(download_link); download_link.click(); }</script>
+
+    <script>document.getElementById("export").addEventListener("click", function
+      () { var html = document.querySelector("table").outerHTML; htmlToCSV(html,
+      "students.csv"); });</script>
   {{/block}}
 {{/extends}}
