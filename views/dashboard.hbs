@@ -1,0 +1,50 @@
+{{#extends "base"}}
+  {{#block "title"}}Dashboard{{/block}}
+
+  {{#block "content"}}
+    <h1 class="mb-4">Dashboard</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Survey Date</th>
+          <th scope="col">MSW Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Race</th>
+          <th scope="col">Marital Status</th>
+          <th scope="col">Highest Education Level</th>
+          <th scope="col">Employment Status</th>
+          <th scope="col">Main Caregiver?</th>
+          <th scope="col">Caregiving Length</th>
+          <th scope="col">Screen Score</th>
+          <th scope="col">Survey Score</th>
+          <th scope="col">Zarit details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each results}}
+          <tr>
+            <td>{{this._id}}</td>
+            <td>{{this.date}}</td>
+            <td>{{this.msw_name}}</td>
+            <td>{{this.age}}</td>
+            <td>{{this.gender}}</td>
+            <td>{{this.race}}</td>
+            <td>{{this.marital_status}}</td>
+            <td>{{this.education_level}}</td>
+            <td>{{this.employment_status}}</td>
+            <td>{{this.main_caregiver}}</td>
+            <td>{{this.caregiving_length}}</td>
+            <td>{{this.screenScore}}</td>
+            <td>{{this.surveyScore}}</td>
+            <td><a
+                class="btn btn-primary btn-sm"
+                href="/details/{{this._id}}"
+              >Details</a></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/block}}
+{{/extends}}

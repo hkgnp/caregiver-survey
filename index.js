@@ -101,12 +101,10 @@ app.use(
   // Dashboard page
   app.get("/dashboard", async (req, res) => {
     const results = await db.collection("results").find({}).toArray();
-
     res.status(200);
-    res.send(results);
-    //res.render("index", {
-    //  results: results,
-    //});
+    res.render("dashboard", {
+      results: results,
+    });
   });
 })();
 
