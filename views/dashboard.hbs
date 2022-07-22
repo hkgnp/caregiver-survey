@@ -2,10 +2,10 @@
   {{#block "title"}}Dashboard{{/block}}
 
   {{#block "content"}}
-    <div class="d-flex gap-3">
-      <h1 class="mb-4">Dashboard</h1>
-      <div><a class="btn btn-success" href="/">New Survey</a></div>
-      <div><button id="export" class="btn btn-primary">Download to CSV</button></div>
+    <div class="align-items-center gap-3 mb-4">
+      <h1 class="mx-0 mt-0 mb-3 p-0">Dashboard</h1>
+      <a class="btn btn-success" href="/">New Survey</a>
+      <button id="export" class="btn btn-primary">Download to CSV</button>
     </div>
 
     <table id="profile" class="table table-hover table-responsive">
@@ -58,8 +58,8 @@
       document.querySelectorAll("table tr"); for (var i = 0; i < rows.length;
       i++) { var row = [], cols = rows[i].querySelectorAll("td, th"); for (var j
       = 0; j < cols.length; j++) { row.push(cols[j].innerText); }
-      data.push(row.join(",")); } downloadCSVFile(data.join("\\\n"), filename);
-      }</script>
+      data.push(row.join(",")); }
+      downloadCSVFile(data.join("\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"), filename); }</script>
 
     <script>function downloadCSVFile(csv, filename) { var csv_file,
       download_link; csv_file = new Blob([csv], {type: "text/csv"});
