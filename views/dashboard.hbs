@@ -59,7 +59,7 @@
       i++) { var row = [], cols = rows[i].querySelectorAll("td, th"); for (var j
       = 0; j < cols.length; j++) { row.push(cols[j].innerText); }
       data.push(row.join(",")); }
-      downloadCSVFile(data.join("\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"), filename); }</script>
+      downloadCSVFile(data.join("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"), filename); }</script>
 
     <script>function downloadCSVFile(csv, filename) { var csv_file,
       download_link; csv_file = new Blob([csv], {type: "text/csv"});
