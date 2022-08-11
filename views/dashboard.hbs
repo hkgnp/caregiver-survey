@@ -9,7 +9,7 @@
       <a class="btn btn-warning" href="/logout">Logout</a>
     </div>
 
-    <table id="profile" class="table table-hover table-responsive">
+    <table id="profiles" class="table table-hover table-responsive">
       <thead>
         <tr>
           <th>ID</th>
@@ -55,23 +55,23 @@
   {{/block}}
 
   {{#block "js"}}
-    <script>function htmlToCSV(html, filename) { var data = []; var rows =
-      document.querySelectorAll("table tr"); for (var i = 0; i < rows.length;
-      i++) { var row = [], cols = rows[i].querySelectorAll("td, th"); for (var j
-      = 0; j < cols.length; j++) { row.push(cols[j].innerText); }
-      data.push(row.join(",")); }
-      downloadCSVFile(data.join("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"), filename);
-      }</script>
-
-    <script>function downloadCSVFile(csv, filename) { var csv_file,
-      download_link; csv_file = new Blob([csv], {type: "text/csv"});
-      download_link = document.createElement("a"); download_link.download =
-      filename; download_link.href = window.URL.createObjectURL(csv_file);
-      download_link.style.display = "none";
-      document.body.appendChild(download_link); download_link.click(); }</script>
-
-    <script>document.getElementById("export").addEventListener("click", function
-      () { var html = document.querySelector("table").outerHTML; htmlToCSV(html,
-      "students.csv"); });</script>
+    {{!Credits: https://stackoverflow.com/a/56370447/14728340}}
+    <script>
+      function downloadTable(table_id, separator = ',') { var rows =
+      document.querySelectorAll('table#' + table_id + ' tr'); var csv = []; for
+      (var i = 0; i < rows.length; i++) { var row = [], cols =
+      rows[i].querySelectorAll('td, th'); for (var j = 0; j < cols.length; j++)
+      { var data = cols[j].innerText.replace(/(\\\\\\\\r\n|\n|\r)/gm,
+      '').replace(/(\s\s)/gm, ' '); data = data.replace(/"/g, '""');
+      row.push('"' + data + '"'); } csv.push(row.join(separator)); } var
+      csv_string = csv.join('\n'); var filename = 'export_' + table_id + '_' +
+      new Date().toLocaleDateString() + '.csv'; var link =
+      document.createElement('a'); link.style.display = 'none';
+      link.setAttribute('target', '_blank'); link.setAttribute('href',
+      'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+      link.setAttribute('download', filename); document.body.appendChild(link);
+      link.click(); document.body.removeChild(link); };
+      document.getElementById("export").addEventListener("click",()=>{downloadTable("profiles");})
+    </script>
   {{/block}}
 {{/extends}}
