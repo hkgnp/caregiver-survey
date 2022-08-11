@@ -20,7 +20,56 @@
     <title>{{#block "title"}}{{/block}}</title>
   </head>
   <body>
+    {{#if success_messages}}
+      {{#each success_messages}}
+        <div
+          class="bg-green-100 border border-red-400 text-green-700 px-4 py-3 rounded relative"
+          role="alert"
+        >
+          <strong class="font-bold">Congrats!</strong>
+          <span class="block sm:inline">{{this}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
+
+    {{#if error_messages}}
+      {{#each error_messages}}
+        <div
+          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+          role="alert"
+        >
+          <strong class="font-bold">Holy smokes!</strong>
+          <span class="block sm:inline">{{this}}</span>
+        </div>
+      {{/each}}
+    {{/if}}
     <div class="container-sm">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Caregiver Burden Survey</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Survey</a>
+              </li>
+              <li id="dashboard-link" class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <div class="w-full bg-gray-800 min-h-full">
         <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-5">
           {{#block "content"}}{{/block}}

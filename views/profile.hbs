@@ -19,14 +19,14 @@
 
       <div class="row">
         <div class="col text-center">
-          <p>Your Screen Score:<br />
-            <span id="screenScore" class="fs-4 p-1 rounded">
-              {{result.screenScore}}</span></p>
-        </div>
-        <div class="col text-center">
-          <p>Your Survey Score:<br />
+          <p>Your Score:<br />
             <span id="surveyScore" class="fs-4 p-1 rounded">
               {{result.surveyScore}}</span></p>
+        </div>
+        <div class="col text-center">
+          <p>Description:<br />
+            <span id="scoreDescription" class="fs-4 p-1 rounded">
+              {{result.scoreDescription}}</span></p>
         </div>
       </div>
     </div>
@@ -220,15 +220,7 @@
   {{#block "js"}}
     <script>
       document.getElementById("printBtn").addEventListener("click", ()=>{
-      window.print() }); const screenScore =
-      parseInt(document.getElementById("screenScore").innerText); if
-      (screenScore >= 8) {
-      document.getElementById("screenScore").style.backgroundColor = "yellow";
-      document.getElementById("screenScore").style.color = "black"; } const
-      surveyScore = parseInt(document.getElementById("surveyScore").innerText);
-      if (surveyScore >= 17) {
-      document.getElementById("surveyScore").style.backgroundColor = "yellow";
-      document.getElementById("surveyScore").style.color = "black"; }
+      window.print() });
     </script>
   {{/block}}
 {{/extends}}

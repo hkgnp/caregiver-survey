@@ -1,0 +1,24 @@
+{{#extends "base"}}
+  {{#block "title"}}Login{{/block}}
+  {{#block "content"}}
+    <h1 class="mb-4">Login</h1>
+    <form method="post">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input name="email" type="email" class="form-control" id="email" />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="password"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="reset" class="btn btn-danger">Reset</button>
+    </form>
+  {{/block}}
+{{/extends}}

@@ -6,6 +6,7 @@
       <h1 class="mx-0 mt-0 mb-3 p-0">Dashboard</h1>
       <a class="btn btn-success" href="/">New Survey</a>
       <button id="export" class="btn btn-primary">Download to CSV</button>
+      <a class="btn btn-warning" href="/logout">Logout</a>
     </div>
 
     <table id="profile" class="table table-hover table-responsive">
@@ -59,7 +60,8 @@
       i++) { var row = [], cols = rows[i].querySelectorAll("td, th"); for (var j
       = 0; j < cols.length; j++) { row.push(cols[j].innerText); }
       data.push(row.join(",")); }
-      downloadCSVFile(data.join("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"), filename); }</script>
+      downloadCSVFile(data.join("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"), filename);
+      }</script>
 
     <script>function downloadCSVFile(csv, filename) { var csv_file,
       download_link; csv_file = new Blob([csv], {type: "text/csv"});
