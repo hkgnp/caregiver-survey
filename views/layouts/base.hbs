@@ -23,7 +23,7 @@
     {{#if success_messages}}
       {{#each success_messages}}
         <div
-          class="bg-green-100 border border-red-400 text-green-700 px-4 py-3 rounded relative"
+          class="bg-success border border-success text-white px-2 py-2 mb-3"
           role="alert"
         >
           <strong class="font-bold">Congrats!</strong>
@@ -35,7 +35,7 @@
     {{#if error_messages}}
       {{#each error_messages}}
         <div
-          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+          class="bg-danger border border-danger text-white px-2 py-2 mb-3"
           role="alert"
         >
           <strong class="font-bold">Holy smokes!</strong>
@@ -43,6 +43,7 @@
         </div>
       {{/each}}
     {{/if}}
+
     <div class="container-sm">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">

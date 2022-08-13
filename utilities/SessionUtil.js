@@ -57,8 +57,6 @@ function use() {
     next();
   });
 
-  console.log("testing one ");
-
   return app;
 }
 

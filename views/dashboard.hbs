@@ -2,14 +2,14 @@
   {{#block "title"}}Dashboard{{/block}}
 
   {{#block "content"}}
-    <div class="align-items-center gap-3 mb-4">
-      <h1 class="mx-0 mt-0 mb-3 p-0">Dashboard</h1>
-      <a class="btn btn-success" href="/">New Survey</a>
-      <button id="export" class="btn btn-primary">Download to CSV</button>
-      <a class="btn btn-warning" href="/logout">Logout</a>
+    <h1 class="mx-0 mt-0 mb-3 p-0">Dashboard</h1>
+    <div class="d-inline align-items-center">
+      <a class="btn btn-success my-1" href="/">New Survey</a>
+      <button id="export" class="btn btn-primary my-1">Download to CSV</button>
+      <a class="btn btn-warning my-1" href="/logout">Logout</a>
     </div>
 
-    <table id="profiles" class="table table-hover table-responsive">
+    <table id="profiles" class="mt-2 table table-hover table-responsive">
       <thead>
         <tr>
           <th>ID</th>
@@ -61,7 +61,8 @@
       document.querySelectorAll('table#' + table_id + ' tr'); var csv = []; for
       (var i = 0; i < rows.length; i++) { var row = [], cols =
       rows[i].querySelectorAll('td, th'); for (var j = 0; j < cols.length; j++)
-      { var data = cols[j].innerText.replace(/(\\\\\\\\r\n|\n|\r)/gm,
+      { var data =
+      cols[j].innerText.replace(/(\\\\\\\\\\\\\\\\\\\\\\\\\\\\r\n|\n|\r)/gm,
       '').replace(/(\s\s)/gm, ' '); data = data.replace(/"/g, '""');
       row.push('"' + data + '"'); } csv.push(row.join(separator)); } var
       csv_string = csv.join('\n'); var filename = 'export_' + table_id + '_' +
