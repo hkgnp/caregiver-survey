@@ -1,3 +1,5 @@
+const hbs = require("hbs");
+
 function use() {
   // if equal function hbs helper
   hbs.registerHelper("if_eq", (a, b, options) => {

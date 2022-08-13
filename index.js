@@ -66,19 +66,24 @@ app.use(sessionUtil.use());
     const { qn1, qn2, qn3, qn4, qn5, qn6, qn7, qn8, qn9, qn10, qn11, qn12 } =
       req.body;
 
-    const surveyScore =
-      parseInt(qn1) +
-      parseInt(qn2) +
-      parseInt(qn3) +
-      parseInt(qn4) +
-      parseInt(qn5) +
-      parseInt(qn6) +
-      parseInt(qn7) +
-      parseInt(qn8) +
-      parseInt(qn9) +
-      parseInt(qn10) +
-      parseInt(qn11) +
-      parseInt(qn12);
+    const numArr = [
+      parseInt(qn1),
+      parseInt(qn2),
+      parseInt(qn3),
+      parseInt(qn4),
+      parseInt(qn5),
+      parseInt(qn6),
+      parseInt(qn7),
+      parseInt(qn8),
+      parseInt(qn9),
+      parseInt(qn10),
+      parseInt(qn11),
+      parseInt(qn12),
+    ];
+
+    const surveyScore = numArr.reduce((total, num) => {
+      return total + num;
+    });
 
     let postObj = req.body;
     postObj["surveyScore"] = surveyScore;
