@@ -23,7 +23,6 @@
           <th>Employment Status</th>
           <th>Main Caregiver?</th>
           <th>Caregiving Length</th>
-          <th>Screen Score</th>
           <th>Survey Score</th>
           <th>Zarit details</th>
         </tr>
@@ -42,7 +41,6 @@
             <td>{{this.employment_status}}</td>
             <td>{{this.main_caregiver}}</td>
             <td>{{this.caregiving_length}}</td>
-            <td>{{this.screenScore}}</td>
             <td>{{this.surveyScore}}</td>
             <td><a
                 class="btn btn-primary btn-sm"
@@ -62,7 +60,7 @@
       (var i = 0; i < rows.length; i++) { var row = [], cols =
       rows[i].querySelectorAll('td, th'); for (var j = 0; j < cols.length; j++)
       { var data =
-      cols[j].innerText.replace(/(\\\\\\\\\\\\\\\\\\\\\\\\\\\\r\n|\n|\r)/gm,
+      cols[j].innerText.replace(/(\\\\\\\\\\\\\\\\\\\\\\\\\\\\\r\n|\n|\r)/gm,
       '').replace(/(\s\s)/gm, ' '); data = data.replace(/"/g, '""');
       row.push('"' + data + '"'); } csv.push(row.join(separator)); } var
       csv_string = csv.join('\n'); var filename = 'export_' + table_id + '_' +
