@@ -1,16 +1,16 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const session = require("express-session");
-const flash = require("connect-flash");
-const csurf = require("csurf");
 const cors = require("cors");
 const mongoUrl = process.env.MONGO_URL;
-const MongoUtil = require("./MongoUtil");
+const MongoUtil = require("./utilities/MongoUtil");
 const ObjectID = require("mongodb").ObjectID;
 const hbs = require("hbs");
 const wax = require("wax-on");
 const crypto = require("crypto");
+
+const sessionUtil = require("./utilities/sessionUtil");
+const hbsUtil = require("./utilities/HbsHelpers");
 
 const { checkIfSuperUser } = require("./middleware");
 
@@ -23,6 +23,7 @@ const getHashedPassword = (password) => {
 app.use(express.json());
 app.use(cors());
 
+// set public folders
 app.use(express.static("public"));
 app.use(
   "/scripts",
@@ -30,22 +31,13 @@ app.use(
 );
 app.use("/css", express.static(__dirname + "/node_modules/bootstrap/dist/css"));
 
+// set view engine
 app.set("view engine", "hbs");
 wax.on(hbs.handlebars);
 wax.setLayoutPath("./views/layouts");
 
-// if equal function hbs helper
-hbs.registerHelper("if_eq", (a, b, options) => {
-  if (a === b) return options.fn(this);
-  else return options.inverse(this);
-});
-
-hbs.registerHelper("eq", function () {
-  const args = Array.prototype.slice.call(arguments, 0, -1);
-  return args.every(function (expression) {
-    return args[0] === expression;
-  });
-});
+// enable hbs helpers
+hbsUtil.use();
 
 // enable forms
 app.use(
@@ -54,54 +46,8 @@ app.use(
   })
 );
 
-// setup sessions
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-  })
-);
-
-// Set up flash
-app.use(flash());
-
-// Set up csurf
-const csurfInstance = csurf();
-
-app.use((err, req, res, next) => {
-  if (err && err.code == "EBADCSRFTOKEN") {
-    console.log(err);
-    req.flash(
-      "error_messages",
-      "The form has expired. Please reload your page."
-    );
-    res.redirect("back");
-  } else {
-    next();
-  }
-});
-
-// Flash messages middleware
-app.use((req, res, next) => {
-  res.locals.success_messages = req.flash("success_messages");
-  res.locals.error_messages = req.flash("error_messages");
-  next();
-});
-
-// User session middleware
-app.use((req, res, next) => {
-  res.locals.user = req.session.user;
-  next();
-});
-
-// req.csrfToken
-app.use((req, res, next) => {
-  if (req.csrfToken) {
-    res.locals.csrfToken = req.csrfToken();
-  }
-  next();
-});
+// enable sessions
+app.use(sessionUtil.use());
 
 (async () => {
   const db = await MongoUtil.connect(mongoUrl, "caregiver-survey");
