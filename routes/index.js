@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async function (req, res) {
+  await new Promise((r) => setTimeout(r, 2000));
   const questions = await req.mongoClient
     .collection("questions")
     .find({})
