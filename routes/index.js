@@ -6,7 +6,7 @@ router.get("/", async function (req, res) {
     .collection("questions")
     .find({})
     .toArray();
-  await new Promise((r) => setTimeout(r, 2000));
+  await new Promise((r) => setTimeout(r, 4000));
   res.render("index", {
     questions: questions,
   });
